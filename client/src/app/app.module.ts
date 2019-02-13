@@ -4,7 +4,8 @@ import {FormsModule} from '@angular/forms';
 //import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ReviewsComponent } from './reviews/reviews.component';
-import { HttpClient, HttpParams, RequestOptions } from '@angular/common/http';
+import { HttpClient, HttpParams, HttpHandler, HttpClientModule } from '@angular/common/http';
+//import {RequestOptions} from '@angular/http';
 
 
 
@@ -12,15 +13,16 @@ import { HttpClient, HttpParams, RequestOptions } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
-    RequestOptions,
+    //RequestOptions,
     ReviewsComponent
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     FormsModule
     
   ],
-  providers: [],
+  providers: [HttpClient],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

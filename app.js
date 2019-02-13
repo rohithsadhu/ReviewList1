@@ -6,11 +6,11 @@ var path = require('path');
 
 
 var app=express();
-
+const route = require('./routes/route');
 const port = 3000;
 
 
-const route = require('./routes/route');
+
 
 //connecting to mongodb
 mongoose.connect('mongodb://localhost:27017/reviewlist');
@@ -24,14 +24,17 @@ mongoose.connection.on('error',(err)=>{
  
 });
 app.use(bodyparser.json());
+
+app.use('/api', route);
+app.use(cors());
 app.use(bodyparser.urlencoded({     // to support URL-encoded bodies
     extended: true
   }));
 
-app.use(cors());
+
 
 app.use(express.static(path.join(__dirname, 'public')));
-app.use('/api', route);
+
 app.get('/',(req,res)=>{
     res.send('foobar');
 });

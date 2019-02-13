@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient,HttpHeaders, HttpClientModule} from '@angular/common/http';
 import {Review} from './review';
-
+//import {RequestOptions} from '@angular/common/http'
 import { map } from 'rxjs/operators';
 import 'rxjs/Rx';
 
@@ -13,22 +13,23 @@ export class ReviewService {
 
   //retrieving reviews 
   getReviews(){
-    return this.http.get('http://localhost:3000/api/reviews').map((res: Response) => res.json());
+    return this.http.get('http://localhost:3000/api/reviews').map((res: Response) => res.json);
 
   }
   //add Reviews
   addReview(newReview){
-    var options = new RequestInfo({
-      headers: new Headers({
-        'Accept': 'application/json'
-      })
-    });
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json'
+   });
+   let options = {
+      headers: headers
+   }
    
-    return this.http.get('http://localhost:3000/api/review',options).map(res => res.json());
+    return this.http.get('http://localhost:3000/api/reviews',options);
   }
 
   //delete Review
   deleteReview(id){
-    return this.http.delete('http://localhost:3000/api/review/'+id).map((res: Response) => res.json());
+    return this.http.delete('http://localhost:3000/api/review/'+id).map((res: Response) => res.json);
   }
 }

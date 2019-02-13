@@ -1,36 +1,37 @@
+
 <div class="contaoner">
-  <h2 class="page-header">ADD REVIEW</h2>
-  <form (submit) = "addContact()">
+  <h2 class="page-header">ADD YOUR REVIEW</h2>
+  <form (submit) = "addReview()">
     <div class ="form-group">
       <label>FirstName</label>
-      <input type="text" [(ngModel)]="first_name" class="form-control" required>
+      <input type= "text" [(ngModel)]= "first_name" name= "first_name" class= "form-control" required>
        
     </div>
     <div class ="form-group">
         <label>LastName</label>
-        <input type="text" [(ngModel)]="last_name" class="form-control" required>
+        <input type= "text" [(ngModel)]= "last_name" name= "last_name" class= "form-control" required>
          
       </div>
       <div class ="form-group">
           <label>Review Description</label>
-          <input type="text" [(ngModel)]="reviewdesc" class="form-control" required>
+          <input type= "text" [(ngModel)] = "reviewdesc" name= "reviewdesc" class= "form-control" required>
            
         </div>
-        <input type="submit" class="btn btn btn-success" value="Add">
+        <input type="submit" class="btn btn btn-success" value="Add"/>
 
   </form>
 </div>
-<hr>
+
 <div class="container">
   <div *ngFor = "let review of reviews">
     <div class = "col-md-3">
-      {{contact.first_name}}
+      {{review.first_name}}
     </div>
     <div class = "col-md-3">
-        {{contact.last_name}}
+        {{review.last_name}}
       </div>
       <div class = "col-md-3">
-          {{contact.reviewdesc}}
+          {{review.reviewdesc}}
         </div>
         <div class = "col-md-3">
             <input type="button" (click) = "deleteReview(review._id)" value="delete" class="btn btn-danger">
